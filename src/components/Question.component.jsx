@@ -31,14 +31,14 @@ class Question extends Component{
 
     render() {
         return (
-            <div className='question'>
+            <div className='list-container'>
                 <div className='question-container'>
                     <div className="w-100">
                         <text style={{fontSize: 20}}>{this.state.question}</text> <br/>
                         Posted by <strong>{this.state.author}</strong> | subscribers: {this.state.subscriber_count}
                     </div>
-                    <div classname="flex-shrink-1">
-                        <Button variant='secondary' size='sm' style={{marginTop: 10, marginBottom: 10}}onClick={this.handleClick}>+</Button>
+                    <div classname="align-self-center">
+                        <Button variant='secondary' size='sm' style={{margin: 10}}onClick={this.handleClick}>+</Button>
                     </div>
                 </div>                
                 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import OfficeHour from '../components/OfficeHour.component';
+import Empty from '../components/Empty.component'
 
 import axios from 'axios';
 import { API } from '../utils'
@@ -22,7 +23,10 @@ export default class OfficeHours extends Component {
     }
 
     renderOfficeHour() {
-        return (
+        if (this.state.officehours.length === 0 ){
+            return <Empty message="No office hours posted"/>       
+        }
+        return (            
             this.state.officehours.map(officehour => {
                 return <OfficeHour name={officehour.name} date={officehour.date} _id={officehour._id}/>
             })
@@ -32,8 +36,10 @@ export default class OfficeHours extends Component {
 
     render() {
         return (
-            <div>
-                { this.renderOfficeHour() }
+            <div className='container'>
+                <div>
+                    { this.renderOfficeHour() }
+                </div>
             </div>
             
         );

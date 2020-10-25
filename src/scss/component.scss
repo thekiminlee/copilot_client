@@ -12,17 +12,23 @@
     font-size: 32px;
 }
 
-.question {
+.list-container {
     width: 100%;
     border-bottom: solid;
     border-width: 2px;
     border-color: rgba(97, 97, 97, 0.2);
+    padding: 10px;
 
     font-family: 'Quicksand', sans-serif;
     font-size: 13px;
+    
 }
 
 .question-container {
     display: flex;
     flex-direction: row;
+}
+
+.button-container {
+    padding: 10 10px;
 }

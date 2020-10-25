@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import '../utils';
+import {Link} from 'react-router-dom';
+
 import { formatDate } from '../utils';
 
 class OfficeHour extends Component {
@@ -15,8 +16,12 @@ class OfficeHour extends Component {
 
     render() {
         return (
-            <div>
-                {this.state.name} {formatDate(this.state.date)} {this.state._id}
+            <div className='list-container' style={{fontSize: 16}}>
+                <Link to={'/officehour/' + this.state._id} style={{textDecoration: 'none', color: "black"}}>
+                    <div>
+                        {this.state.name} <br/>{formatDate(this.state.date)}
+                    </div>
+                </Link>            
             </div>
         )
     }
