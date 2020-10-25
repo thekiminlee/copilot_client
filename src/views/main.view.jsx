@@ -5,10 +5,10 @@ import axios from 'axios';
 import DatePicker from '@bit/nexxtway.react-rainbow.date-picker'
 
 import "../scss/view.scss"
-import { formatDate } from "../utils"
+import { API } from "../utils"
 
 // API
-const POST_OFFICEHOUR = "http://localhost:8000/api/officehour"
+const POST_OFFICEHOUR = API + "officehour"
 
 export default class Main extends Component {
 

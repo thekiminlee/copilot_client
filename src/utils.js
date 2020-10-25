@@ -1,4 +1,4 @@
-
+export const API = 'http://localhost:8000/api/'
 /* 
     input: string DateTime
     return: DateTime string formatted to YYYY/MM/DD

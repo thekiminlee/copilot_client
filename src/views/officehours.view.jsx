@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import OfficeHour from '../components/OfficeHour.component';
 
 import axios from 'axios';
+import { API } from '../utils'
 
-const GET_OFFICEHOUR = 'http://localhost:8000/api/officehours'
+const GET_OFFICEHOUR = API + 'officehours'
 
 export default class OfficeHours extends Component {
     constructor(props) {

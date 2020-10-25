@@ -5,12 +5,12 @@ import axios from 'axios';
 import Question from '../components/Question.component';
 import Empty from '../components/Empty.component';
 
-import { formatDate } from '../utils'
+import { API, formatDate } from '../utils'
 
 
-const GET_OFFICEHOUR = 'http://localhost:8000/api/officehour'
+const GET_OFFICEHOUR = API + 'officehour'
 const GET_QUESTIONS = GET_OFFICEHOUR + '/questions';
-const POST_QUESTIONS = 'http://localhost:8000/api/officehour'
+const POST_QUESTIONS = API + 'officehour'
 
 export default class OfficeHour extends Component {
     constructor(props){
@@ -75,7 +75,7 @@ export default class OfficeHour extends Component {
         return (
             <div className="container">
 
-                <div className="row">
+                <div className="row full">
                     {/* Question submission section */}
                     <section className="col question-form">
                         <Form onSubmit={this.handleSubmit}>
@@ -83,7 +83,7 @@ export default class OfficeHour extends Component {
                             <div className='title-label'>{this.state.officehour_name}</div>
                             <div className='date-label'>{formatDate(this.state.officehour_date)}</div>
                             <FormGroup controlId="studentInfo">
-                                <div className='row'>
+                                <div className='row full'>
                                     <div className='col'>
                                         <Form.Label className="form-label">Name:</Form.Label>
                                         <Form.Control value={this.state.name} name='name' onChange={this.handleChange} type='text' placeholder='Enter name'/>                                
