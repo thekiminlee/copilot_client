@@ -17,7 +17,6 @@ export default class Main extends Component {
         this.state = {
             name: '',
             date: new Date()
-
         }
     }
 

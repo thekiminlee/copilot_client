@@ -5,7 +5,7 @@ import axios from 'axios';
 import Question from '../components/Question.component';
 import Empty from '../components/Empty.component';
 
-import { API, formatDate } from '../utils'
+import { API, officeHourExpired, formatDate, deleteOfficeHour } from '../utils'
 
 
 const GET_OFFICEHOUR = API + 'officehour'
@@ -21,7 +21,8 @@ export default class OfficeHour extends Component {
             email: '',
             question: '',
             officehour_name: '',
-            officehour_date: ''
+            officehour_date: '',
+            officehour_id: ''
         }
     }
 
@@ -31,18 +32,8 @@ export default class OfficeHour extends Component {
             .catch(err => console.log(err))
 
         axios.get(GET_OFFICEHOUR + "/" + this.props.match.params.id)
-            .then(resp => this.setState({officehour_name: resp.data.name, officehour_date: resp.data.date }))
+            .then(resp => this.setState({officehour_name: resp.data.name, officehour_date: resp.data.date, officehour_id: resp.data._id }))
             .catch(err => console.log(err))
-    }
-
-    renderQuestions() {
-        if (this.state.questions.length === 0) 
-            return <Empty message='No questions for this office hour'/>
-        return (
-            this.state.questions.map(question => {
-                return <Question question={question} />
-            })
-        )
     }
 
     handleSubmit = (event) => {
@@ -63,15 +54,31 @@ export default class OfficeHour extends Component {
                 alert("Question submission failed");
                 console.log(err)
             })
-        // reload();
-
     }
 
     handleChange = (event) => {
-        this.setState({ [event.target.name ]: event.target.value });
+        this.setState({ [event.target.name]: event.target.value });
     }
 
-    render() {
+    renderQuestions() {
+        if (this.state.questions.length === 0) 
+            return <Empty message='No questions for this office hour'/>
+        return (
+            this.state.questions.map(question => {
+                return <Question question={question} />
+            })
+        )
+    }
+    
+    renderEmpty() {
+        return (
+            <div className='container'>
+                <Empty message='Office hour expired'/>
+            </div>
+        )
+    }
+
+    renderContent() {
         return (
             <div className="container">
 
@@ -110,6 +117,14 @@ export default class OfficeHour extends Component {
                 </div>
             </div>
         )
+    }
+
+    render() {
+        if (officeHourExpired(this.state.officehour_date)) {
+            deleteOfficeHour(this.state.officehour_id);
+            return this.renderEmpty()
+        } else 
+            return this.renderContent();
     }
 
 }
