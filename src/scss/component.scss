@@ -1,0 +1,22 @@
+.empty-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.empty-message {
+    font-family: 'Quicksand', sans-serif;
+    color: lightgrey;
+    font-size: 32px;
+}
+
+.question {
+    width: 100%;
+    border-bottom: solid;
+    border-width: 2px;
+    border-color: rgba(97, 97, 97, 0.2);
+
+    font-family: 'Quicksand', sans-serif;
+}
