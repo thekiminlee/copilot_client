@@ -23,7 +23,10 @@ export default class Main extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         axios.post(POST_OFFICEHOUR, { name: this.state.name, date: this.state.date })
-        .then(res => alert("Office hour for " + this.state.date.toString() + " successfully posted."))
+        .then(res => {
+            alert("Office hour for " + this.state.date.toString() + " successfully posted.");
+            window.location.reload();
+        })
         .catch(err => {
             alert("Office hour cannot be posted");
             console.log(err)
