@@ -1,9 +1,10 @@
 import axios from 'axios';
 
 // API url
-const PRODUCTION_URL = '';
+const PRODUCTION_URL = 'https://copilot-server.herokuapp.com/api/';
 const DEV_URL = 'http://localhost:8000/api/'
-export const API = DEV_URL;
+export const API = PRODUCTION_URL;
+
 /* 
     input: string DateTime
     return: DateTime string formatted to YYYY/MM/DD
